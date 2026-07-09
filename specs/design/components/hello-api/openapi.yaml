@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Hello World API
+  version: 0.1.0
+  description: Minimal API returning a greeting message.
+servers:
+  - url: /
+paths:
+  /hello:
+    get:
+      operationId: getHello
+      summary: Get a greeting message
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Optional name to personalize the greeting
+      responses:
+        '200':
+          description: Greeting returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Greeting'
+  /health:
+    get:
+      operationId: getHealth
+      summary: Liveness health check
+      responses:
+        '200':
+          description: Service is running normally
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+components:
+  schemas:
+    Greeting:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+          description: The greeting message
+    Health:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          description: Service status

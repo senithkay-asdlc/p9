@@ -1,0 +1,12 @@
+{
+  "name": "hello-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Go",
+  "buildpack": "docker",
+  "appPath": "hello-api",
+  "entrypoint": "deployment/service",
+  "exposure": "internet",
+  "dependencies": [],
+  "description": "Minimal HTTP API providing a greeting endpoint and a health check. Serves as a reference deployment: stateless, no persistence, no authentication. Does not implement rate limiting, i18n, or any business logic beyond the optional name-personalized greeting."
+}
